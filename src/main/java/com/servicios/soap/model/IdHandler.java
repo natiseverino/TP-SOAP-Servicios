@@ -1,7 +1,5 @@
 package com.servicios.soap.model;
 
-import java.util.Date;
-
 public class IdHandler {
 	
 	private static int actualCowId = 0;
