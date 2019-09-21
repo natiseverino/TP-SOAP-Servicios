@@ -43,6 +43,17 @@ public class Cow {
 		bcsDate = new Date();
 	}
 
+	
+
+	public Date getBCSDate() {
+		return bcsDate;
+	}
+
+
+	public void setBCSDate(Date bcsDate) {
+		this.bcsDate = bcsDate;
+	}
+
 
 	public int getElectronicId() {
 		return electronicId;

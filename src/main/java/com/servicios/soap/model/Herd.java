@@ -14,7 +14,6 @@ public class Herd {
 		id = IdHandler.getHerdId();
 		this.name = name;
 		this.location = location;
-		
 		cows = new ArrayList<Cow>();
 	}
 
