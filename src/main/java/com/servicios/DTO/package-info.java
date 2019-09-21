@@ -6,4 +6,4 @@
 //
 
 @javax.xml.bind.annotation.XmlSchema(namespace = "http://www.example.org/carpintero_severino")
-package com.servicios.DAO;
+package com.servicios.DTO;

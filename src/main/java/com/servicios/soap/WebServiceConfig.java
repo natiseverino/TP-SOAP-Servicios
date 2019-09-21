@@ -26,7 +26,7 @@ public class WebServiceConfig extends WsConfigurerAdapter {
 	    return new ServletRegistrationBean(servlet, "/ws/*");
 	}
 	
-	@Bean(name = "cowsbsc")
+	@Bean(name = "cowsbcs")
 	public DefaultWsdl11Definition defaultWsdl11Definition(XsdSchema BCSSchema) {
 	    DefaultWsdl11Definition wsdl11Definition = new DefaultWsdl11Definition();
 	    wsdl11Definition.setPortTypeName("CowsPort");
