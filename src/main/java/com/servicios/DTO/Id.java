@@ -6,26 +6,24 @@
 //
 
 
-package com.servicios.DAO;
+package com.servicios.DTO;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for anonymous complex type.
+ * <p>Java class for Id complex type.
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
- * &lt;complexType>
+ * &lt;complexType name="Id">
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="cow" type="{http://www.example.org/carpintero_severino}Cow"/>
+ *         &lt;element name="id" type="{http://www.w3.org/2001/XMLSchema}int"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -35,37 +33,27 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "", propOrder = {
-    "cow"
+@XmlType(name = "Id", propOrder = {
+    "id"
 })
-@XmlRootElement(name = "createCowResponse")
-public class CreateCowResponse {
+public class Id {
 
-    @XmlElement(required = true)
-    protected Cow cow;
+    protected int id;
 
     /**
-     * Gets the value of the cow property.
+     * Gets the value of the id property.
      * 
-     * @return
-     *     possible object is
-     *     {@link Cow }
-     *     
      */
-    public Cow getCow() {
-        return cow;
+    public int getId() {
+        return id;
     }
 
     /**
-     * Sets the value of the cow property.
+     * Sets the value of the id property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link Cow }
-     *     
      */
-    public void setCow(Cow value) {
-        this.cow = value;
+    public void setId(int value) {
+        this.id = value;
     }
 
 }

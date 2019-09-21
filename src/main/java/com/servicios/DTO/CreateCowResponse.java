@@ -6,7 +6,7 @@
 //
 
 
-package com.servicios.DAO;
+package com.servicios.DTO;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -25,7 +25,7 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="id" type="{http://www.example.org/carpintero_severino}Id"/>
+ *         &lt;element name="cow" type="{http://www.example.org/carpintero_severino}Cow"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -36,36 +36,36 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "id"
+    "cow"
 })
-@XmlRootElement(name = "getCowInfoRequest")
-public class GetCowInfoRequest {
+@XmlRootElement(name = "createCowResponse")
+public class CreateCowResponse {
 
     @XmlElement(required = true)
-    protected Id id;
+    protected Cow cow;
 
     /**
-     * Gets the value of the id property.
+     * Gets the value of the cow property.
      * 
      * @return
      *     possible object is
-     *     {@link Id }
+     *     {@link Cow }
      *     
      */
-    public Id getId() {
-        return id;
+    public Cow getCow() {
+        return cow;
     }
 
     /**
-     * Sets the value of the id property.
+     * Sets the value of the cow property.
      * 
      * @param value
      *     allowed object is
-     *     {@link Id }
+     *     {@link Cow }
      *     
      */
-    public void setId(Id value) {
-        this.id = value;
+    public void setCow(Cow value) {
+        this.cow = value;
     }
 
 }

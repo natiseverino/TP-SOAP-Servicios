@@ -6,26 +6,26 @@
 //
 
 
-package com.servicios.DAO;
+package com.servicios.DTO;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for CowInfo complex type.
+ * <p>Java class for anonymous complex type.
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
- * &lt;complexType name="CowInfo">
+ * &lt;complexType>
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="cow" type="{http://www.example.org/carpintero_severino}Cow"/>
- *         &lt;element name="bsc" type="{http://www.example.org/carpintero_severino}CowBCS" minOccurs="0"/>
+ *         &lt;element name="cowInfo" type="{http://www.example.org/carpintero_severino}CowInfo"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -35,62 +35,37 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "CowInfo", propOrder = {
-    "cow",
-    "bsc"
+@XmlType(name = "", propOrder = {
+    "cowInfo"
 })
-public class CowInfo {
+@XmlRootElement(name = "getCowInfoResponse")
+public class GetCowInfoResponse {
 
     @XmlElement(required = true)
-    protected Cow cow;
-    protected CowBCS bsc;
+    protected CowInfo cowInfo;
 
     /**
-     * Gets the value of the cow property.
+     * Gets the value of the cowInfo property.
      * 
      * @return
      *     possible object is
-     *     {@link Cow }
+     *     {@link CowInfo }
      *     
      */
-    public Cow getCow() {
-        return cow;
+    public CowInfo getCowInfo() {
+        return cowInfo;
     }
 
     /**
-     * Sets the value of the cow property.
+     * Sets the value of the cowInfo property.
      * 
      * @param value
      *     allowed object is
-     *     {@link Cow }
+     *     {@link CowInfo }
      *     
      */
-    public void setCow(Cow value) {
-        this.cow = value;
-    }
-
-    /**
-     * Gets the value of the bsc property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link CowBCS }
-     *     
-     */
-    public CowBCS getBsc() {
-        return bsc;
-    }
-
-    /**
-     * Sets the value of the bsc property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link CowBCS }
-     *     
-     */
-    public void setBsc(CowBCS value) {
-        this.bsc = value;
+    public void setCowInfo(CowInfo value) {
+        this.cowInfo = value;
     }
 
 }

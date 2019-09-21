@@ -6,7 +6,7 @@
 //
 
 
-package com.servicios.DAO;
+package com.servicios.DTO;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -15,17 +15,17 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for CowHerdIds complex type.
+ * <p>Java class for HerdInfo complex type.
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
- * &lt;complexType name="CowHerdIds">
+ * &lt;complexType name="HerdInfo">
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="cow_id" type="{http://www.example.org/carpintero_severino}Id"/>
- *         &lt;element name="herd_id" type="{http://www.example.org/carpintero_severino}Id"/>
+ *         &lt;element name="herd" type="{http://www.example.org/carpintero_severino}Herd"/>
+ *         &lt;element name="avgBCS" type="{http://www.w3.org/2001/XMLSchema}double" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -35,63 +35,62 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "CowHerdIds", propOrder = {
-    "cowId",
-    "herdId"
+@XmlType(name = "HerdInfo", propOrder = {
+    "herd",
+    "avgBCS"
 })
-public class CowHerdIds {
+public class HerdInfo {
 
-    @XmlElement(name = "cow_id", required = true)
-    protected Id cowId;
-    @XmlElement(name = "herd_id", required = true)
-    protected Id herdId;
+    @XmlElement(required = true)
+    protected Herd herd;
+    protected Double avgBCS;
 
     /**
-     * Gets the value of the cowId property.
+     * Gets the value of the herd property.
      * 
      * @return
      *     possible object is
-     *     {@link Id }
+     *     {@link Herd }
      *     
      */
-    public Id getCowId() {
-        return cowId;
+    public Herd getHerd() {
+        return herd;
     }
 
     /**
-     * Sets the value of the cowId property.
+     * Sets the value of the herd property.
      * 
      * @param value
      *     allowed object is
-     *     {@link Id }
+     *     {@link Herd }
      *     
      */
-    public void setCowId(Id value) {
-        this.cowId = value;
+    public void setHerd(Herd value) {
+        this.herd = value;
     }
 
     /**
-     * Gets the value of the herdId property.
+     * Gets the value of the avgBCS property.
      * 
      * @return
      *     possible object is
-     *     {@link Id }
+     *     {@link Double }
      *     
      */
-    public Id getHerdId() {
-        return herdId;
+    public Double getAvgBCS() {
+        return avgBCS;
     }
 
     /**
-     * Sets the value of the herdId property.
+     * Sets the value of the avgBCS property.
      * 
      * @param value
      *     allowed object is
-     *     {@link Id }
+     *     {@link Double }
      *     
      */
-    public void setHerdId(Id value) {
-        this.herdId = value;
+    public void setAvgBCS(Double value) {
+        this.avgBCS = value;
     }
 
 }

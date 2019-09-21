@@ -6,12 +6,12 @@ import org.springframework.ws.server.endpoint.annotation.PayloadRoot;
 import org.springframework.ws.server.endpoint.annotation.RequestPayload;
 import org.springframework.ws.server.endpoint.annotation.ResponsePayload;
 
-import com.servicios.DAO.CreateCowBCSRequest;
-import com.servicios.DAO.CreateCowBCSResponse;
-import com.servicios.DAO.GetCowInfoRequest;
-import com.servicios.DAO.GetCowInfoResponse;
-import com.servicios.DAO.GetHerdInfoRequest;
-import com.servicios.DAO.GetHerdInfoResponse;
+import com.servicios.DTO.CreateCowBCSRequest;
+import com.servicios.DTO.CreateCowBCSResponse;
+import com.servicios.DTO.GetCowInfoRequest;
+import com.servicios.DTO.GetCowInfoResponse;
+import com.servicios.DTO.GetHerdInfoRequest;
+import com.servicios.DTO.GetHerdInfoResponse;
 
 @Endpoint
 public class MyEndpoint {

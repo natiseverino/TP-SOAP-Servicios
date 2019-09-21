@@ -6,30 +6,27 @@
 //
 
 
-package com.servicios.DAO;
+package com.servicios.DTO;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlType;
-import javax.xml.datatype.XMLGregorianCalendar;
 
 
 /**
- * <p>Java class for Cow complex type.
+ * <p>Java class for Herd complex type.
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
- * &lt;complexType name="Cow">
+ * &lt;complexType name="Herd">
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
  *         &lt;element name="id" type="{http://www.example.org/carpintero_severino}Id" minOccurs="0"/>
- *         &lt;element name="electronic_id" type="{http://www.w3.org/2001/XMLSchema}int"/>
- *         &lt;element name="birthdate" type="{http://www.w3.org/2001/XMLSchema}date" minOccurs="0"/>
- *         &lt;element name="weight" type="{http://www.w3.org/2001/XMLSchema}double"/>
+ *         &lt;element name="name" type="{http://www.w3.org/2001/XMLSchema}string"/>
+ *         &lt;element name="location" type="{http://www.w3.org/2001/XMLSchema}string"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -39,20 +36,18 @@ import javax.xml.datatype.XMLGregorianCalendar;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "Cow", propOrder = {
+@XmlType(name = "Herd", propOrder = {
     "id",
-    "electronicId",
-    "birthdate",
-    "weight"
+    "name",
+    "location"
 })
-public class Cow {
+public class Herd {
 
     protected Id id;
-    @XmlElement(name = "electronic_id")
-    protected int electronicId;
-    @XmlSchemaType(name = "date")
-    protected XMLGregorianCalendar birthdate;
-    protected double weight;
+    @XmlElement(required = true)
+    protected String name;
+    @XmlElement(required = true)
+    protected String location;
 
     /**
      * Gets the value of the id property.
@@ -79,59 +74,51 @@ public class Cow {
     }
 
     /**
-     * Gets the value of the electronicId property.
-     * 
-     */
-    public int getElectronicId() {
-        return electronicId;
-    }
-
-    /**
-     * Sets the value of the electronicId property.
-     * 
-     */
-    public void setElectronicId(int value) {
-        this.electronicId = value;
-    }
-
-    /**
-     * Gets the value of the birthdate property.
+     * Gets the value of the name property.
      * 
      * @return
      *     possible object is
-     *     {@link XMLGregorianCalendar }
+     *     {@link String }
      *     
      */
-    public XMLGregorianCalendar getBirthdate() {
-        return birthdate;
+    public String getName() {
+        return name;
     }
 
     /**
-     * Sets the value of the birthdate property.
+     * Sets the value of the name property.
      * 
      * @param value
      *     allowed object is
-     *     {@link XMLGregorianCalendar }
+     *     {@link String }
      *     
      */
-    public void setBirthdate(XMLGregorianCalendar value) {
-        this.birthdate = value;
+    public void setName(String value) {
+        this.name = value;
     }
 
     /**
-     * Gets the value of the weight property.
+     * Gets the value of the location property.
      * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
      */
-    public double getWeight() {
-        return weight;
+    public String getLocation() {
+        return location;
     }
 
     /**
-     * Sets the value of the weight property.
+     * Sets the value of the location property.
      * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
      */
-    public void setWeight(double value) {
-        this.weight = value;
+    public void setLocation(String value) {
+        this.location = value;
     }
 
 }

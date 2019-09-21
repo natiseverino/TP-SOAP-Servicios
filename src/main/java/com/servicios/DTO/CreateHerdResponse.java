@@ -6,7 +6,7 @@
 //
 
 
-package com.servicios.DAO;
+package com.servicios.DTO;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -25,7 +25,7 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="herdInfo" type="{http://www.example.org/carpintero_severino}HerdInfo"/>
+ *         &lt;element name="herd" type="{http://www.example.org/carpintero_severino}Herd"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -36,36 +36,36 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "herdInfo"
+    "herd"
 })
-@XmlRootElement(name = "getHerdInfoResponse")
-public class GetHerdInfoResponse {
+@XmlRootElement(name = "createHerdResponse")
+public class CreateHerdResponse {
 
     @XmlElement(required = true)
-    protected HerdInfo herdInfo;
+    protected Herd herd;
 
     /**
-     * Gets the value of the herdInfo property.
+     * Gets the value of the herd property.
      * 
      * @return
      *     possible object is
-     *     {@link HerdInfo }
+     *     {@link Herd }
      *     
      */
-    public HerdInfo getHerdInfo() {
-        return herdInfo;
+    public Herd getHerd() {
+        return herd;
     }
 
     /**
-     * Sets the value of the herdInfo property.
+     * Sets the value of the herd property.
      * 
      * @param value
      *     allowed object is
-     *     {@link HerdInfo }
+     *     {@link Herd }
      *     
      */
-    public void setHerdInfo(HerdInfo value) {
-        this.herdInfo = value;
+    public void setHerd(Herd value) {
+        this.herd = value;
     }
 
 }
