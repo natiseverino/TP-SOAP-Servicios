@@ -26,9 +26,8 @@
 
 	<complexType name="CowBCS">
 		<sequence>
-			<element name="id" type="int" maxOccurs="1" minOccurs="0"></element>
 			<element name="cow_id" type="tns:Id" maxOccurs="1" minOccurs="1"></element>
-			<element name="date" type="date" maxOccurs="1" minOccurs="1"></element>
+			<element name="date" type="date" maxOccurs="1" minOccurs="0"></element>
 			<element name="BCS" type="int" maxOccurs="1" minOccurs="1"></element>
 		</sequence>
 	</complexType>

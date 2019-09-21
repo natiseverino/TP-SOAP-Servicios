@@ -44,6 +44,12 @@ public class Id {
      * Gets the value of the id property.
      * 
      */
+    public Id() {}
+    
+    public Id(int id) {
+    	this.id=id;
+    }
+    
     public int getId() {
         return id;
     }
