@@ -26,27 +26,35 @@ public class MyEndpoint {
         this.repository = repository;
     }
     
-    
-    @PayloadRoot(namespace = NAMESPACE_URI, localPart = "createCowRequest")
-    @ResponsePayload
-    public CreateCowResponse addCow(@RequestPayload CreateCowRequest request) {
-    	Cow cow = request.getCow();
-    	int id = repository.addCow(cow.getElectronicId(), cow.getBirthdate(), cow.getWeight());
-    	CreateCowResponse response = new CreateCowResponse();
-    	cow.setId(new Id(id));
-    	response.setCow(cow);
-        return response;
-    }
-    
     private static XMLGregorianCalendar getXmlGregorianCalendarFromDate(final Date date) throws DatatypeConfigurationException{
         GregorianCalendar calendar = new GregorianCalendar();
         calendar.setTime(date);
         return DatatypeFactory.newInstance().newXMLGregorianCalendar(calendar);
     }
     
+    private static Date toDate(XMLGregorianCalendar calendar){
+        if(calendar == null) {
+            return null;
+        }
+        return calendar.toGregorianCalendar().getTime();
+    }
+    
+    
+    @PayloadRoot(namespace = NAMESPACE_URI, localPart = "createCowRequest")
+    @ResponsePayload
+    public CreateCowResponse addCow(@RequestPayload CreateCowRequest request) {
+    	Cow cow = request.getCow();
+    	int id = repository.addCow(cow.getElectronicId(), toDate(cow.getBirthdate()), cow.getWeight());
+    	CreateCowResponse response = new CreateCowResponse();
+    	cow.setId(new Id(id));
+    	response.setCow(cow);
+        return response;
+    }
+    
+    
     @PayloadRoot(namespace = NAMESPACE_URI, localPart = "createCowBCSRequest")
     @ResponsePayload
-    public CreateCowBCSResponse addBCS(@RequestPayload CreateCowBCSRequest request) {
+    public CreateCowBCSResponse addBCS(@RequestPayload CreateCowBCSRequest request) throws DatatypeConfigurationException {
     	CowBCS cowbcs = request.getCowbcs();
     	Date date = repository.addBCS(cowbcs.getBCS(), cowbcs.getCowId().getId());
     	CreateCowBCSResponse response = new CreateCowBCSResponse();
@@ -57,13 +65,13 @@ public class MyEndpoint {
  
     @PayloadRoot(namespace = NAMESPACE_URI, localPart = "getCowInfoRequest")
     @ResponsePayload
-    public GetCowInfoResponse getCowInfo(@RequestPayload GetCowInfoRequest request) {
+    public GetCowInfoResponse getCowInfo(@RequestPayload GetCowInfoRequest request) throws DatatypeConfigurationException{
     	Id id = request.getId();
     	com.servicios.soap.model.Cow cow_model = repository.getCow(id.getId());
     	if (cow_model != null) {
     		Cow cow = new Cow();
     		cow.setBirthdate(getXmlGregorianCalendarFromDate(cow_model.getBirthdate()));
-    		cow.setId(id));
+    		cow.setId(id);
     		cow.setElectronicId(cow_model.getElectronicId());
     		cow.setWeight(cow_model.getWeight());
     		
@@ -71,14 +79,18 @@ public class MyEndpoint {
     		cowbcs.setBCS(cow_model.getBCS());
     		cowbcs.setCowId(id);
     		cowbcs.setDate(getXmlGregorianCalendarFromDate(cow_model.getBCSDate()));
-    		
+
     		CowInfo cowInfo = new CowInfo();
     		cowInfo.setBsc(cowbcs);
     		cowInfo.setCow(cow);
+    		
+    		GetCowInfoResponse response = new GetCowInfoResponse();
+    		response.setCowInfo(cowInfo);
+    		
+    		return response;
     	}
-        GetCowInfoResponse response = new GetCowInfoResponse();
+    	//TODO return fault
         
-        return response;
     }
     
     @PayloadRoot(namespace = NAMESPACE_URI, localPart = "createHerdRequest")
@@ -117,12 +129,16 @@ public class MyEndpoint {
     		HerdInfo herdInfo = new HerdInfo();
     		herdInfo.setAvgBCS(herd_model.getAverageBCS());
     		herdInfo.setHerd(herd);
+    		
+    		GetHerdInfoResponse response = new GetHerdInfoResponse();
+    		response.setHerdInfo(herdInfo);
+        
+    		return response;
+  
     	}
     	
-    	
-        GetHerdInfoResponse response = new GetHerdInfoResponse();
+    //TODO return fault
         
-        return response;
     }
 
  

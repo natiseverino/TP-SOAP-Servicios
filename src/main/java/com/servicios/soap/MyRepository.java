@@ -2,7 +2,7 @@ package com.servicios.soap;
 
 import java.util.ArrayList;
 import java.util.Date;
-import javax.annotation.PostConstruct;
+//import javax.annotation.PostConstruct;
 import org.springframework.stereotype.Component;
 
 import com.servicios.soap.model.*;
