@@ -17,7 +17,7 @@ import com.servicios.DTO.*;
 public class MyEndpoint {
 	
  
-    private static final String NAMESPACE_URI = "http://www.servicios.com/DTO";
+    private static final String NAMESPACE_URI = "http://www.example.org/carpintero_severino";
  
     private MyRepository repository;
  
@@ -27,13 +27,13 @@ public class MyEndpoint {
     }
     
     private static XMLGregorianCalendar getXmlGregorianCalendarFromDate(final Date date) throws DatatypeConfigurationException{
-        GregorianCalendar calendar = new GregorianCalendar();
+    	GregorianCalendar calendar = new GregorianCalendar();
         calendar.setTime(date);
         return DatatypeFactory.newInstance().newXMLGregorianCalendar(calendar);
     }
     
     private static Date toDate(XMLGregorianCalendar calendar){
-        if(calendar == null) {
+    	if(calendar == null) {
             return null;
         }
         return calendar.toGregorianCalendar().getTime();
@@ -68,29 +68,26 @@ public class MyEndpoint {
     public GetCowInfoResponse getCowInfo(@RequestPayload GetCowInfoRequest request) throws DatatypeConfigurationException{
     	Id id = request.getId();
     	com.servicios.soap.model.Cow cow_model = repository.getCow(id.getId());
-    	if (cow_model != null) {
-    		Cow cow = new Cow();
-    		cow.setBirthdate(getXmlGregorianCalendarFromDate(cow_model.getBirthdate()));
-    		cow.setId(id);
-    		cow.setElectronicId(cow_model.getElectronicId());
-    		cow.setWeight(cow_model.getWeight());
-    		
-    		CowBCS cowbcs = new CowBCS();
-    		cowbcs.setBCS(cow_model.getBCS());
-    		cowbcs.setCowId(id);
-    		cowbcs.setDate(getXmlGregorianCalendarFromDate(cow_model.getBCSDate()));
+		Cow cow = new Cow();
+		cow.setBirthdate(getXmlGregorianCalendarFromDate(cow_model.getBirthdate()));
+		cow.setId(id);
+		cow.setElectronicId(cow_model.getElectronicId());
+		cow.setWeight(cow_model.getWeight());
+		
+		CowBCS cowbcs = new CowBCS();
+		cowbcs.setBCS(cow_model.getBCS());
+		cowbcs.setCowId(id);
+		cowbcs.setDate(getXmlGregorianCalendarFromDate(cow_model.getBCSDate()));
 
-    		CowInfo cowInfo = new CowInfo();
-    		cowInfo.setBsc(cowbcs);
-    		cowInfo.setCow(cow);
-    		
-    		GetCowInfoResponse response = new GetCowInfoResponse();
-    		response.setCowInfo(cowInfo);
-    		
-    		return response;
-    	}
-    	//TODO return fault
-        
+		CowInfo cowInfo = new CowInfo();
+		cowInfo.setBsc(cowbcs);
+		cowInfo.setCow(cow);
+		
+		GetCowInfoResponse response = new GetCowInfoResponse();
+		response.setCowInfo(cowInfo);
+		
+		return response;
+ 
     }
     
     @PayloadRoot(namespace = NAMESPACE_URI, localPart = "createHerdRequest")
@@ -120,25 +117,21 @@ public class MyEndpoint {
     public GetHerdInfoResponse getHerdInfo(@RequestPayload GetHerdInfoRequest request) {
     	Id id = request.getId();
     	com.servicios.soap.model.Herd herd_model = repository.getHerd(id.getId());
-    	if (herd_model != null) {
-    		Herd herd = new Herd();
-    		herd.setId(id);
-    		herd.setName(herd_model.getName());
-    		herd.setLocation(herd_model.getLocation());
-    		
-    		HerdInfo herdInfo = new HerdInfo();
-    		herdInfo.setAvgBCS(herd_model.getAverageBCS());
-    		herdInfo.setHerd(herd);
-    		
-    		GetHerdInfoResponse response = new GetHerdInfoResponse();
-    		response.setHerdInfo(herdInfo);
-        
-    		return response;
+    	Herd herd = new Herd();
+		herd.setId(id);
+		herd.setName(herd_model.getName());
+		herd.setLocation(herd_model.getLocation());
+		
+		HerdInfo herdInfo = new HerdInfo();
+		herdInfo.setAvgBCS(herd_model.getAverageBCS());
+		herdInfo.setHerd(herd);
+		
+		GetHerdInfoResponse response = new GetHerdInfoResponse();
+		response.setHerdInfo(herdInfo);
+    
+		return response;
   
-    	}
-    	
-    //TODO return fault
-        
+
     }
 
  
