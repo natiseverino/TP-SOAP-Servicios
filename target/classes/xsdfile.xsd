@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+	xmlns:tns="http://www.example.org/carpintero_severino"
+	targetNamespace="http://www.example.org/carpintero_severino">
+
+<!-- Complex types -->
+
+	<complexType name="Cow">
+		<sequence>
+			<element name="id" type="tns:Id" maxOccurs="1" minOccurs="0"></element>
+			<element name="electronic_id" type="int" maxOccurs="1"
+				minOccurs="1"></element>
+			<element name="birthdate" type="date" maxOccurs="1"
+				minOccurs="0"></element>
+			<element name="weight" type="double" maxOccurs="1"
+				minOccurs="1"></element>
+		</sequence>
+	</complexType>
+
+    <complexType name="CowInfo">
+    	<sequence>
+    		<element name="cow" type="tns:Cow" maxOccurs="1" minOccurs="1"></element>
+    		<element name="bsc" type="tns:CowBCS" maxOccurs="1" minOccurs="0"></element>
+    	</sequence>
+    </complexType>
+
+	<complexType name="CowBCS">
+		<sequence>
+			<element name="cow_id" type="tns:Id" maxOccurs="1" minOccurs="1"></element>
+			<element name="date" type="date" maxOccurs="1" minOccurs="0"></element>
+			<element name="BCS" type="int" maxOccurs="1" minOccurs="1"></element>
+		</sequence>
+	</complexType>
+
+    <complexType name="Herd">
+    	<sequence>
+    		<element name="id" type="tns:Id" maxOccurs="1" minOccurs="0"></element>
+    		<element name="name" type="string" maxOccurs="1"
+    			minOccurs="1">
+    		</element>
+    		<element name="location" type="string" maxOccurs="1" minOccurs="1"></element>
+    	</sequence>
+    </complexType>
+    
+        <complexType name="HerdInfo">
+    	<sequence>
+    		<element name="herd" type="tns:Herd" maxOccurs="1" minOccurs="1"></element>
+    		<element name="avgBCS" type="double" maxOccurs="1" minOccurs="0"></element>
+    	</sequence>
+    </complexType>
+
+    <complexType name="Id">
+    	<sequence>
+    		<element name="id" type="int" maxOccurs="1" minOccurs="1"></element>
+    	</sequence>
+    </complexType>
+    
+    
+    <complexType name="CowHerdIds">
+    	<sequence>
+    		<element name="cow_id" type="tns:Id" maxOccurs="1" minOccurs="1"></element>
+    		<element name="herd_id" type="tns:Id" maxOccurs="1" minOccurs="1"></element>
+    	</sequence>
+    </complexType>
+    
+  <!-- Request/Response -->
+  
+  	<element name="createCowRequest">
+		<complexType>
+			<sequence>
+				<element name="cow" type="tns:Cow"></element>
+			</sequence>
+		</complexType>
+	</element>
+
+	<element name="createCowResponse">
+		<complexType>
+			<sequence>
+				<element name="cow" type="tns:Cow"></element>
+			</sequence>
+		</complexType>
+	</element>
+  
+  
+    <element name="createCowBCSRequest">
+		<complexType>
+    		<sequence>
+    			<element name="cowbcs" type="tns:CowBCS"/>
+    		</sequence>
+    	</complexType>
+	</element>
+
+	<element name="createCowBCSResponse">
+		<complexType>
+    		<sequence>
+    			<element name="cowbcs" type="tns:CowBCS"/>
+    		</sequence>
+    	</complexType>
+	</element>
+	
+
+	<element name="createHerdRequest">
+		<complexType>
+    		<sequence>
+    			<element name="herd" type="tns:Herd"/>
+    		</sequence>
+    	</complexType>
+	</element>
+
+    <element name="createHerdResponse">
+    	<complexType>
+    		<sequence>
+    			<element name="herd" type="tns:Herd"/>
+    		</sequence>
+    	</complexType>
+    </element>
+    
+
+    <element name="addCowToHerdRequest">
+    	<complexType>
+    		<sequence>
+    			<element name="cowherdIds" type="tns:CowHerdIds"/>
+    		</sequence>
+    	</complexType>
+    </element>
+
+    <element name="addCowToHerdResponse">
+    	<complexType>
+    			<sequence>
+    				<element name="bool" type="boolean"/>
+    			</sequence>
+    	</complexType>
+    </element>
+    
+
+    <element name="getHerdInfoRequest">
+        <complexType>
+    		<sequence>
+    			<element name="id" type="tns:Id"/>
+    		</sequence>
+    	</complexType>
+    </element>
+
+    <element name="getHerdInfoResponse">
+        <complexType>
+    		<sequence>
+    			<element name="herdInfo" type="tns:HerdInfo"/>
+    		</sequence>
+    	</complexType>
+    </element>
+
+
+    <element name="getCowInfoRequest">
+    	<complexType>
+    		<sequence>
+    			<element name="id" type="tns:Id"/>
+    		</sequence>
+    	</complexType>
+    </element>
+
+    <element name="getCowInfoResponse">
+    	<complexType>
+    		<sequence>
+    			<element name="cowInfo" type="tns:CowInfo"/>
+    		</sequence>
+    	</complexType>
+    </element>
+    
+</schema>
